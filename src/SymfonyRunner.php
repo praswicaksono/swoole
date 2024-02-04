@@ -34,6 +34,7 @@ class SymfonyRunner implements RunnerInterface
         $server = $this->serverFactory->createServer([$this, 'handle']);
 
         if ($this->application instanceof KernelInterface) {
+            $this->application->boot();
             $this->registerSwooleEvents($server, $this->serverFactory->getOptions(), $this->application->getContainer());
         }
 
